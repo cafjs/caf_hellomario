@@ -1,0 +1,20 @@
+{
+  "name": "caf_iot_hellomario",
+  "description": "Cloud Assistants IoT example (Device)",
+  "version": "0.4.0",
+  "author": "",
+  "dependencies": {
+      "caf_iot" : "^0.4.0",
+      "caf_iot_lego" : "^0.4.0",
+      "caf_node-poweredup": "^8.0.5"
+   },
+   "browser" : {
+        "./lib/main.js" : "./lib/main-shim.js"
+    },
+    "scripts": {
+       "start" : "node ./index.js",
+        "build": "echo done"
+    },
+   "main": "index",
+  "engines": { "node": ">= 10.0.0" }
+}
