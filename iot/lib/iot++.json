@@ -39,6 +39,18 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "handler",
+                    "components" : [
+                        {
+                            "name": "props",
+                            "description": "Exposes read-only properties to app methods",
+                            "env" : {
+                                "marioEvents" : "process.env.MARIO_EVENTS||[\"pants\", \"gesture\", \"barcode\"]"
+                            }
+                        }
+                    ]
                 }
             ]
         }
