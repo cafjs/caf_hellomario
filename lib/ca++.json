@@ -54,7 +54,8 @@
                 {
                     "name": "props",
                     "env" : {
-                        "legoDeviceTypes": "process.env.LEGO_DEVICE_TYPES||[\"MARIO_ACCELEROMETER\", \"MARIO_BARCODE_SENSOR\",\"MARIO_PANTS_SENSOR\"]"
+                        "legoDeviceTypes": "process.env.LEGO_DEVICE_TYPES||[\"MARIO_ACCELEROMETER\", \"MARIO_BARCODE_SENSOR\",\"MARIO_PANTS_SENSOR\"]",
+                        "maxMarioEvents": "process.env.MAX_MARIO_EVENTS||10"
                     }
                 }
             ]
