@@ -6,11 +6,9 @@ const AppActions = require('../actions/AppActions');
 const AppStatus = require('./AppStatus');
 
 const DisplayError = require('./DisplayError');
-const DisplayURL = require('./DisplayURL');
 const DisplayDisconnect = require('./DisplayDisconnect');
-const DisplayAR = require('./DisplayAR');
 
-const Matrix = require('./Matrix');
+const MarioEvents = require('./MarioEvents');
 const Manage = require('./Manage');
 const Daemon = require('./Daemon');
 
@@ -49,18 +47,9 @@ class MyApp extends React.Component {
                       ctx: this.props.ctx,
                       error: this.state.error
                   }),
-                  cE(DisplayURL, {
-                      ctx: this.props.ctx,
-                      displayURL: this.state.displayURL
-                  }),
                   cE(DisplayDisconnect, {
                       ctx: this.props.ctx,
                       displayDisconnect: this.state.displayDisconnect
-                  }),
-                  cE(DisplayAR, {
-                      ctx: this.props.ctx,
-                      inIFrame: this.state.inIFrame,
-                      displayAR: this.state.displayAR
                   }),
                   cE(rB.Panel, null,
                      cE(rB.Panel.Heading, null,
@@ -76,7 +65,7 @@ class MyApp extends React.Component {
                                      sm: 5,
                                      xs:10,
                                      className: 'text-right'
-                                 }, 'hellolego'),
+                                 }, 'hellomario'),
                                  cE(rB.Col, {
                                      sm: 5,
                                      xs:11,
@@ -89,17 +78,17 @@ class MyApp extends React.Component {
                      cE(rB.Panel.Body, null,
                         cE(rB.Panel, null,
                            cE(rB.Panel.Heading, null,
-                              cE(rB.Panel.Title, null, 'Color LED Matrix: ' +
+                              cE(rB.Panel.Title, null, 'Super Mario: ' +
                                  (this.state.isConnected ?
                                   'Connected' :
                                   'NOT Connected')
                                 )
                              ),
                            cE(rB.Panel.Body, null,
-                              cE(Matrix, {
+                              cE(MarioEvents, {
                                   ctx: this.props.ctx,
                                   isConnected: this.state.isConnected,
-                                  ledOn: this.state.ledOn
+                                  marioEvents: this.state.marioEvents
                               })
                              )
                           ),
