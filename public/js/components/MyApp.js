@@ -78,6 +78,23 @@ class MyApp extends React.Component {
                      cE(rB.Panel.Body, null,
                         cE(rB.Panel, null,
                            cE(rB.Panel.Heading, null,
+                              cE(rB.Panel.Title, null, 'Manage')
+                             ),
+                           cE(rB.Panel.Body, null,
+                              cE(Manage, {
+                                  ctx: this.props.ctx,
+                                  inIFrame: this.state.inIFrame,
+                                  isConnected: this.state.isConnected,
+                                  linkedTo: this.state.linkedTo
+                              }),
+                              cE(Daemon, {
+                                  ctx: this.props.ctx,
+                                  inIFrame: this.state.inIFrame
+                              }),
+                             )
+                          ),
+                        cE(rB.Panel, null,
+                           cE(rB.Panel.Heading, null,
                               cE(rB.Panel.Title, null, 'Super Mario: ' +
                                  (this.state.isConnected ?
                                   'Connected' :
@@ -87,25 +104,8 @@ class MyApp extends React.Component {
                            cE(rB.Panel.Body, null,
                               cE(MarioEvents, {
                                   ctx: this.props.ctx,
-                                  isConnected: this.state.isConnected,
                                   marioEvents: this.state.marioEvents
                               })
-                             )
-                          ),
-                        cE(rB.Panel, null,
-                           cE(rB.Panel.Heading, null,
-                              cE(rB.Panel.Title, null, 'Manage')
-                             ),
-                           cE(rB.Panel.Body, null,
-                              cE(Manage, {
-                                  ctx: this.props.ctx,
-                                  inIFrame: this.state.inIFrame,
-                                  isConnected: this.state.isConnected
-                              }),
-                              cE(Daemon, {
-                                  ctx: this.props.ctx,
-                                  inIFrame: this.state.inIFrame
-                              }),
                              )
                           )
                        )

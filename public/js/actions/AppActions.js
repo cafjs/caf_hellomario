@@ -1,3 +1,4 @@
+'use strict';
 const AppConstants = require('../constants/AppConstants');
 const json_rpc = require('caf_transport').json_rpc;
 const caf_cli =  require('caf_cli');
@@ -64,15 +65,12 @@ const AppActions = {
         updateF(ctx.store, data);
     },
     resetError(ctx) {
-        errorF(ctx.store, null);
-    },
-    setError(ctx, err) {
-        errorF(ctx.store, err);
+        AppActions.setError(ctx.store, null);
     }
 };
 
 const EXTERNAL_METHODS = [
-    'setLED', 'connect', 'disconnect',
+    'connect', 'disconnect', 'follow', 'unfollow', 'setError',
     'getState' // Add your methods here
 ];
 

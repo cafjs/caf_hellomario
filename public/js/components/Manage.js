@@ -11,17 +11,12 @@ class Manage extends React.Component {
         super(props);
 
         this.share = this.share.bind(this);
-        this.doAR = this.doAR.bind(this);
         this.disconnect = this.disconnect.bind(this);
         this.spawnTab = this.spawnTab.bind(this);
     }
 
     share() {
         AppActions.setLocalState(this.props.ctx, {displayURL: true});
-    }
-
-    doAR() {
-        AppActions.setLocalState(this.props.ctx, {displayAR: true});
     }
 
     disconnect() {
@@ -66,13 +61,6 @@ class Manage extends React.Component {
                     key: 12,
                     onClick: this.share
                 }, 'Share'),
-                this.props.inIFrame ?
-                    null :
-                    cE(rB.Button, {
-                        key: 34,
-                        bsStyle: 'info',
-                        onClick: this.doAR
-                    }, 'AR View'),
                 cE(rB.Button, {
                     key: 32,
                     bsStyle: 'danger',

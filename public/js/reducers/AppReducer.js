@@ -1,5 +1,5 @@
+'use strict';
 const AppConstants = require('../constants/AppConstants');
-const COLOR_NONE = 255; // LED off
 
 const isInIFrame = () =>  (typeof window !== 'undefined') &&
           (window.location !== window.parent.location);
@@ -7,10 +7,9 @@ const isInIFrame = () =>  (typeof window !== 'undefined') &&
 const AppReducer = function(state, action) {
     if (typeof state === 'undefined') {
         return  {isConnected: false, isClosed: false,
-                 ledOn: COLOR_NONE, displayDisconnect: false,
-                 displayAR: false,
+                 marioEvents: [], linkedTo: null,
+                 displayDisconnect: false,
                  inIFrame: isInIFrame(),
-                 displayURL: false,
                  error: null};
     } else {
         switch(action.type) {
