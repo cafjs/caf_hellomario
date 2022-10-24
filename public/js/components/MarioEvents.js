@@ -16,9 +16,9 @@ class MarioEvents extends React.Component {
            cE('tr', {key:10*i},
               [
                   cE('td', {key:10*i+1}, event.timestamp),
-                  cE('td', {key:10*i+1}, event.source),
-                  cE('td', {key:10*i+1}, event.topic),
-                  cE('td', {key:10*i+1}, JSON.stringify(event.obj))
+                  cE('td', {key:10*i+2}, event.source),
+                  cE('td', {key:10*i+3}, event.topic),
+                  cE('td', {key:10*i+4}, JSON.stringify(event.obj))
               ]);
 
         return cE(rB.Table, {striped: true, responsive: true, bordered: true,
@@ -31,7 +31,7 @@ class MarioEvents extends React.Component {
                          cE('th', {key:8}, 'Data')
                        )
                     ),
-                  cE('tbody', {key:8}, (this.props.marioEvents || [])
+                  cE('tbody', {key:9}, (this.props.marioEvents || [])
                      .map((x, i) => renderOneRow(x, i))
                     )
                  );
