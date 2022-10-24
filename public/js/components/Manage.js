@@ -10,13 +10,13 @@ class Manage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.share = this.share.bind(this);
+        this.edit = this.edit.bind(this);
         this.disconnect = this.disconnect.bind(this);
         this.spawnTab = this.spawnTab.bind(this);
     }
 
-    share() {
-        AppActions.setLocalState(this.props.ctx, {displayURL: true});
+    edit() {
+        AppActions.setLocalState(this.props.ctx, {displayEdit: true});
     }
 
     disconnect() {
@@ -55,18 +55,36 @@ class Manage extends React.Component {
 
     render() {
         if (this.props.isConnected) {
-            return cE(rB.ButtonGroup, {bsClass: 'btn-group mybuttongroup'}, [
-                cE(rB.Button, {
-                    bsStyle: 'primary',
-                    key: 12,
-                    onClick: this.share
-                }, 'Share'),
-                cE(rB.Button, {
-                    key: 32,
-                    bsStyle: 'danger',
-                    onClick: this.disconnect
-                }, 'Disconnect')
-            ].filter(x => !!x));
+            return  cE(rB.Form, {horizontal: true},
+                       cE(rB.FormGroup, {controlId: 'linkedTo', key: 12},
+                          cE(rB.Col, {sm: 3, xs: 12},
+                             cE(rB.ControlLabel, null, 'Following')
+                            ),
+                          cE(rB.Col, {sm: 6, xs: 12},
+                             cE(rB.FormControl.Static, null,
+                                this.props.linkedTo || 'Nobody')
+                            ),
+                          cE(rB.Col, {sm: 3, xs: 12},
+                             cE(rB.Button, {
+                                 bsStyle: 'primary',
+                                 key: 12,
+                                 onClick: this.edit
+                             }, 'Edit')
+                            )
+                         ),
+                       cE(rB.FormGroup, {controlId: 'connection', key: 13},
+                          cE(rB.Col, {sm: 3, xs: 12},
+                             cE(rB.ControlLabel, null, 'Connection')
+                            ),
+                          cE(rB.Col, {smOffset: 6, sm: 3, xs: 12},
+                             cE(rB.Button, {
+                                 key: 32,
+                                 bsStyle: 'danger',
+                                 onClick: this.disconnect
+                             }, 'Disconnect')
+                            )
+                         )
+                      );
         } else {
             if (this.props.inIFrame) {
                 return cE(rB.Button, {bsSize: 'large',

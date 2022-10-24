@@ -6,6 +6,7 @@ const AppActions = require('../actions/AppActions');
 const AppStatus = require('./AppStatus');
 
 const DisplayError = require('./DisplayError');
+const DisplayEdit = require('./DisplayEdit');
 const DisplayDisconnect = require('./DisplayDisconnect');
 
 const MarioEvents = require('./MarioEvents');
@@ -46,6 +47,11 @@ class MyApp extends React.Component {
                   cE(DisplayError, {
                       ctx: this.props.ctx,
                       error: this.state.error
+                  }),
+                  cE(DisplayEdit, {
+                      ctx: this.props.ctx,
+                      displayEdit: this.state.displayEdit,
+                      linkedTo: this.state.linkedTo
                   }),
                   cE(DisplayDisconnect, {
                       ctx: this.props.ctx,

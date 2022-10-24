@@ -8,7 +8,7 @@ const AppReducer = function(state, action) {
     if (typeof state === 'undefined') {
         return  {isConnected: false, isClosed: false,
                  marioEvents: [], linkedTo: null,
-                 displayDisconnect: false,
+                 displayDisconnect: false, displayEdit: false,
                  inIFrame: isInIFrame(),
                  error: null};
     } else {
