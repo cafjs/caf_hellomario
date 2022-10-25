@@ -28,7 +28,7 @@
                     "env" : {
                         "maxRetries" : "$._.env.maxRetries",
                         "retryDelay" : "$._.env.retryDelay",
-                        "manuallyAttached": "process.env.MANUALLY_ATTACHED||[]]"
+                        "manuallyAttached": "process.env.MANUALLY_ATTACHED||[]"
                     },
                     "components" : [
                         {

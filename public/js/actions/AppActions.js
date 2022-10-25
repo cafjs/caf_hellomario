@@ -65,7 +65,7 @@ const AppActions = {
         updateF(ctx.store, data);
     },
     resetError(ctx) {
-        AppActions.setError(ctx.store, null);
+        AppActions.setError(ctx, null);
     }
 };
 

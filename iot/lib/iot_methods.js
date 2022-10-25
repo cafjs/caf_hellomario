@@ -52,8 +52,12 @@ exports.methods = {
     },
 
     async __iot_handleEvent__(deviceType, topic, obj) {
-        const timestamp = Date.now();
-        this.state.pending.push({timestamp, topic, obj});
+        if ((topic == 'gesture') && (obj.gesture === 0)) {
+            this.$.log && this.$.log.trace('Ignore gesture');
+        } else {
+            const timestamp = Date.now();
+            this.state.pending.push({timestamp, topic, obj});
+        }
         return [];
     },
 

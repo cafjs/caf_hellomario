@@ -17,7 +17,7 @@ caf_iot.init(module, null, null, function(err, $) {
         button.addEventListener('click', function handler() {
             $._.$.iot.$.queue.process(
                 'connect',
-                [['TECHNIC_3X3_COLOR_LIGHT_MATRIX']],
+                [['MARIO_ACCELEROMETER', 'MARIO_BARCODE_SENSOR', 'MARIO_PANTS_SENSOR']],
                 null,
                 (err) => {
                     button.style = 'display:none;';
