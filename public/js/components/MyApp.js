@@ -11,6 +11,7 @@ const DisplayDisconnect = require('./DisplayDisconnect');
 
 const MarioEvents = require('./MarioEvents');
 const Manage = require('./Manage');
+const Follow = require('./Follow');
 const Daemon = require('./Daemon');
 
 const cE = React.createElement;
@@ -87,11 +88,14 @@ class MyApp extends React.Component {
                               cE(rB.Panel.Title, null, 'Manage')
                              ),
                            cE(rB.Panel.Body, null,
+                              cE(Follow, {
+                                  ctx: this.props.ctx,
+                                  linkedTo: this.state.linkedTo
+                              }),
                               cE(Manage, {
                                   ctx: this.props.ctx,
                                   inIFrame: this.state.inIFrame,
-                                  isConnected: this.state.isConnected,
-                                  linkedTo: this.state.linkedTo
+                                  isConnected: this.state.isConnected
                               }),
                               cE(Daemon, {
                                   ctx: this.props.ctx,

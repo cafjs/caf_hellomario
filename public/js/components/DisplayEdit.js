@@ -15,6 +15,7 @@ class DisplayEdit extends React.Component {
         this.doDismiss = this.doDismiss.bind(this);
         this.handleFollow = this.handleFollow.bind(this);
         this.doUpdate = this.doUpdate.bind(this);
+        this.submit = this.submit.bind(this);
     }
 
     doDismiss(ev) {
@@ -23,6 +24,13 @@ class DisplayEdit extends React.Component {
 
     handleFollow(e) {
         this.setState({following: e.target.value});
+    }
+
+    submit(ev) {
+        if (ev.key === 'Enter') {
+            ev.preventDefault();
+            this.doUpdate(ev);
+        }
     }
 
     doUpdate(ev) {
@@ -69,7 +77,8 @@ class DisplayEdit extends React.Component {
                            cE(rB.Col, {sm: 8, xs: 12},
                               cE(rB.FormControl, {
                                   value: this.state.following,
-                                  onChange: this.handleFollow
+                                  onChange: this.handleFollow,
+                                  onKeyPress: this.submit
                               })
                              )
                           )

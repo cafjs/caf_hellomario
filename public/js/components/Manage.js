@@ -10,13 +10,8 @@ class Manage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.edit = this.edit.bind(this);
         this.disconnect = this.disconnect.bind(this);
         this.spawnTab = this.spawnTab.bind(this);
-    }
-
-    edit() {
-        AppActions.setLocalState(this.props.ctx, {displayEdit: true});
     }
 
     disconnect() {
@@ -56,22 +51,6 @@ class Manage extends React.Component {
     render() {
         if (this.props.isConnected) {
             return  cE(rB.Form, {horizontal: true},
-                       cE(rB.FormGroup, {controlId: 'linkedTo', key: 12},
-                          cE(rB.Col, {sm: 3, xs: 12},
-                             cE(rB.ControlLabel, null, 'Following')
-                            ),
-                          cE(rB.Col, {sm: 6, xs: 12},
-                             cE(rB.FormControl.Static, null,
-                                this.props.linkedTo || 'Nobody')
-                            ),
-                          cE(rB.Col, {sm: 3, xs: 12},
-                             cE(rB.Button, {
-                                 bsStyle: 'primary',
-                                 key: 12,
-                                 onClick: this.edit
-                             }, 'Edit')
-                            )
-                         ),
                        cE(rB.FormGroup, {controlId: 'connection', key: 13},
                           cE(rB.Col, {sm: 3, xs: 12},
                              cE(rB.ControlLabel, null, 'Connection')
@@ -90,7 +69,7 @@ class Manage extends React.Component {
                 return cE(rB.Button, {bsSize: 'large',
                                       bsStyle: 'danger',
                                       onClick: this.spawnTab},
-                          'Press to Start');
+                          'Spawn to Connect');
             } else {
                 return cE('div', null); // Connect button in Daemon.js
             }

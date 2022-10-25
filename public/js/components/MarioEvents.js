@@ -17,7 +17,7 @@ class MarioEvents extends React.Component {
               [
                   cE('td', {key:10*i+1}, event.timestamp),
                   cE('td', {key:10*i+2}, event.source),
-                  cE('td', {key:10*i+3}, event.topic),
+//                  cE('td', {key:10*i+3}, event.topic),
                   cE('td', {key:10*i+4}, JSON.stringify(event.obj))
               ]);
 
@@ -27,7 +27,7 @@ class MarioEvents extends React.Component {
                      cE('tr', {key:1},
                          cE('th', {key:2}, 'Time'),
                          cE('th', {key:5}, 'Source'),
-                         cE('th', {key:6}, 'Topic'),
+//                         cE('th', {key:6}, 'Topic'),
                          cE('th', {key:8}, 'Data')
                        )
                     ),
