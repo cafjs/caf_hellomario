@@ -2,8 +2,8 @@
 # DOCKER-VERSION  1.7.0
 # AUTHOR:         
 # DESCRIPTION:    Cloud Assistants application
-# TO_BUILD:       docker build --tag ghcr.io/<user>/caf_hellolego.
-# TO_RUN:         cafjs run --appImage ghcr.io/<user>/caf_hellolego hellolego
+# TO_BUILD:       docker build --tag ghcr.io/<user>/caf_hellomario.
+# TO_RUN:         cafjs run --appImage ghcr.io/<user>/caf_hellomario hellomario
 
 FROM ghcr.io/cafjs/caf:latest
 

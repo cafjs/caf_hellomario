@@ -1,9 +1,9 @@
 # VERSION 0.1
 # DOCKER-VERSION  1.7.0
 # AUTHOR:         
-# DESCRIPTION:    Cloud Assistants application hellolego
-# TO_BUILD:        cafjs mkImage . gcr.io/cafjs-k8/<user>-hellolego
-# TO_RUN:         cafjs run --appImage gcr.io/cafjs-k8/<user>-hellolego hellolego
+# DESCRIPTION:    Cloud Assistants application hellomario
+# TO_BUILD:        cafjs mkImage . gcr.io/cafjs-k8/<user>-hellomario
+# TO_RUN:         cafjs run --appImage gcr.io/cafjs-k8/<user>-hellomario hellomario
 
 FROM node:16
 
