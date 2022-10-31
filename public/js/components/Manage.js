@@ -14,9 +14,15 @@ class Manage extends React.Component {
         this.spawnTab = this.spawnTab.bind(this);
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.isConnected && !this.props.isConnected &&
+            !this.props.inIFrame) {
+            AppActions.setLocalState(this.props.ctx, {displayDisconnect: true});
+        }
+    }
+
     disconnect() {
         if (!this.props.inIFrame) {
-            AppActions.setLocalState(this.props.ctx, {displayDisconnect: true});
             AppActions.disconnect(this.props.ctx, false);
         } else {
             // forced disconnect, even when the IoT bridge is missing...

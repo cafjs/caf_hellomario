@@ -9,9 +9,14 @@ exports.methods = {
     },
 
     async __iot_loop__() {
+        this.$.log && this.$.log.debug(`Loop: ${Date.now()}`);
         const isConnected = this.$.lego.isConnected();
         if (this.toCloud.get('isConnected') !== isConnected) {
             this.toCloud.set('isConnected', isConnected);
+            if (!isConnected) {
+                //clean up if accidentally disconnected
+                await this.disconnect();
+            }
         }
 
         if (this.state.pending.length > 0) {
@@ -42,7 +47,7 @@ exports.methods = {
             const serializableError = JSON.parse(myUtils.errToStr(err));
             serializableError.message = serializableError.error ?
                 serializableError.error.message :
-                'Cannot Perform Bluetooth Operation';
+                'Cannot perform Bluetooth operation, please REFRESH PAGE';
 
             await this.$.cloud.cli.setError(serializableError).getPromise();
             return [];
@@ -63,8 +68,9 @@ exports.methods = {
 
     async connect(deviceTypes) {
         if (!this.$.lego.isConnected()) {
+            this.$.log && this.$.log.debug(`Connecting...`);
             await this.$.lego.connect(deviceTypes);
-
+            this.$.log && this.$.log.debug(`Done!`);
             this.$.props.marioEvents.forEach(event => {
                 this.$.lego.registerHandler(null, event, '__iot_handleEvent__');
             });

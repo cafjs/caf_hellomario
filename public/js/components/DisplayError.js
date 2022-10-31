@@ -10,10 +10,18 @@ class DisplayError extends React.Component {
     constructor(props) {
         super(props);
         this.doDismissError = this.doDismissError.bind(this);
+        this.doReload = this.doReload.bind(this);
     }
 
     doDismissError(ev) {
         AppActions.resetError(this.props.ctx);
+    }
+
+    doReload(ev) {
+        this.doDismissError(ev); // reset cloud assistant error
+        if (typeof window !== 'undefined') {
+            window.location.reload();
+        }
     }
 
     render() {
@@ -31,7 +39,11 @@ class DisplayError extends React.Component {
                         this.props.error && this.props.error.message)
                     ),
                   cE(rB.Modal.Footer, null,
-                     cE(rB.Button, {onClick: this.doDismissError}, 'Continue')
+                      cE(rB.ButtonGroup, null,
+                         cE(rB.Button, {onClick: this.doDismissError}, 'Continue'),
+                         cE(rB.Button, {onClick: this.doReload,
+                                        bsStyle: 'danger'}, 'Reload')
+                        )
                     )
                  );
     }
