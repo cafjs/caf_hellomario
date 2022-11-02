@@ -31,7 +31,7 @@ class Daemon extends React.Component {
                 sandbox: 'allow-same-origin allow-popups ' +
                     'allow-scripts allow-forms allow-pointer-lock',
                 frameBorder: 0,
-                style: {maxHeight: '85px', maxWidth: '152px'},
+                style: {maxHeight: '65px', maxWidth: '152px'},
                 src: getURL()
             }, null) :
         cE('div', null);

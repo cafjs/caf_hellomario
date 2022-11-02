@@ -104,7 +104,7 @@ class MyApp extends React.Component {
                       light: 'type: ambient; intensity: 0.5'
                   }),
                   cE(Entity, {
-                      light: 'type: directional; intensity: 1.5',
+                      light: 'type: directional; intensity: 3.0',
                       position: {x: 0, y: 0, z: 1}
                   })
                  );

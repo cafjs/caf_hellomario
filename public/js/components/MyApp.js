@@ -8,6 +8,8 @@ const AppStatus = require('./AppStatus');
 const DisplayError = require('./DisplayError');
 const DisplayEdit = require('./DisplayEdit');
 const DisplayDisconnect = require('./DisplayDisconnect');
+const DisplayURL = require('./DisplayURL');
+const DisplayAR = require('./DisplayAR');
 
 const MarioEvents = require('./MarioEvents');
 const Manage = require('./Manage');
@@ -48,6 +50,15 @@ class MyApp extends React.Component {
                   cE(DisplayError, {
                       ctx: this.props.ctx,
                       error: this.state.error
+                  }),
+                  cE(DisplayURL, {
+                      ctx: this.props.ctx,
+                      displayURL: this.state.displayURL
+                  }),
+                  cE(DisplayAR, {
+                      ctx: this.props.ctx,
+                      inIFrame: this.state.inIFrame,
+                      displayAR: this.state.displayAR
                   }),
                   cE(DisplayEdit, {
                       ctx: this.props.ctx,

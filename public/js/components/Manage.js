@@ -9,7 +9,8 @@ const url = require('url');
 class Manage extends React.Component {
     constructor(props) {
         super(props);
-
+        this.share = this.share.bind(this);
+        this.doAR = this.doAR.bind(this);
         this.disconnect = this.disconnect.bind(this);
         this.spawnTab = this.spawnTab.bind(this);
     }
@@ -19,6 +20,14 @@ class Manage extends React.Component {
             !this.props.inIFrame) {
             AppActions.setLocalState(this.props.ctx, {displayDisconnect: true});
         }
+    }
+
+    share() {
+        AppActions.setLocalState(this.props.ctx, {displayURL: true});
+    }
+
+    doAR() {
+        AppActions.setLocalState(this.props.ctx, {displayAR: true});
     }
 
     disconnect() {
@@ -61,12 +70,28 @@ class Manage extends React.Component {
                           cE(rB.Col, {sm: 3, xs: 12},
                              cE(rB.ControlLabel, null, 'Connection')
                             ),
-                          cE(rB.Col, {smOffset: 6, sm: 3, xs: 12},
-                             cE(rB.Button, {
-                                 key: 32,
-                                 bsStyle: 'danger',
-                                 onClick: this.disconnect
-                             }, 'Disconnect')
+                          cE(rB.Col, {smOffset: 3, sm: 6, xs: 12},
+                             cE(rB.ButtonGroup, {
+                                 bsClass: 'btn-group mybuttongroup'}, [
+                                     cE(rB.Button, {
+                                         bsStyle: 'primary',
+                                         key: 12,
+                                         onClick: this.share
+                                     }, 'URL'),
+                                     this.props.inIFrame ?
+                                         null :
+                                         cE(rB.Button, {
+                                             key: 34,
+                                             bsStyle: 'info',
+                                             onClick: this.doAR
+                                         }, 'AR View'),
+                                     cE(rB.Button, {
+                                         key: 32,
+                                         bsStyle: 'danger',
+                                         onClick: this.disconnect
+                                     }, 'Disconnect')
+                                 ].filter(x => !!x)
+                               )
                             )
                          )
                       );
