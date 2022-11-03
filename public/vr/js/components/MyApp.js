@@ -84,6 +84,10 @@ class MyApp extends React.Component {
                      cE('a-asset-item', {
                          id: 'supermario',
                          src: '{{__CDN__}}/assets/supermario.gltf'
+                     }),
+                     cE('a-asset-item', {
+                         id: 'luigi',
+                         src: '{{__CDN__}}/assets/luigi.gltf'
                      })
                     ),
                   cE(AppStatus, {
@@ -98,7 +102,9 @@ class MyApp extends React.Component {
                   cE(SuperMario, {
                       ctx: this.props.ctx,
                       marioEvents: this.state.marioEvents,
-                      linkedTo: this.state.linkedTo
+                      linkedTo: this.state.linkedTo,
+                      myHubType: this.state.myHubType,
+                      linkedHubType: this.state.linkedHubType
                   }),
                   cE(Entity, {
                       light: 'type: ambient; intensity: 0.5'

@@ -1,10 +1,27 @@
 'use strict';
 
 const myUtils = require('caf_iot').caf_components.myUtils;
+const LUIGI = 'luigi'; // hubType
+const MARIO = 'mario'; // hubType
+const MARIO_PREFIX = '0.4.';
+const LUIGI_PREFIX = '0.5.';
+
+const findHubType = (props) => {
+    if (!props) {
+        return null;
+    } else if (props.hardwareVersion.indexOf(MARIO_PREFIX) === 0) {
+        return MARIO;
+    } else  if (props.hardwareVersion.indexOf(LUIGI_PREFIX) === 0) {
+        return LUIGI;
+    } else {
+        return null;
+    }
+};
 
 exports.methods = {
     async __iot_setup__() {
-        this.state.pending = []; // Array<{timestamp, topic, obj}>
+        this.state.pending = []; // Array<{timestamp, hubType, topic, obj}>
+        this.state.hubType = null;
         return [];
     },
 
@@ -61,7 +78,8 @@ exports.methods = {
             this.$.log && this.$.log.trace('Ignore gesture');
         } else {
             const timestamp = Date.now();
-            this.state.pending.push({timestamp, topic, obj});
+            const hubType = this.state.hubType;
+            this.state.pending.push({timestamp, hubType, topic, obj});
         }
         return [];
     },
@@ -70,7 +88,9 @@ exports.methods = {
         if (!this.$.lego.isConnected()) {
             this.$.log && this.$.log.debug(`Connecting...`);
             await this.$.lego.connect(deviceTypes);
-            this.$.log && this.$.log.debug(`Done!`);
+            const props = this.$.lego.getHubProps();
+            this.$.log && this.$.log.debug(`${JSON.stringify(props)}`);
+            this.state.hubType = findHubType(props);
             this.$.props.marioEvents.forEach(event => {
                 this.$.lego.registerHandler(null, event, '__iot_handleEvent__');
             });
@@ -83,6 +103,7 @@ exports.methods = {
         this.$.props.marioEvents.forEach(event => {
             this.$.lego.registerHandler(null, event, null);
         });
+        this.state.hubType = null;
         await this.$.lego.disconnect();
         return [];
     }

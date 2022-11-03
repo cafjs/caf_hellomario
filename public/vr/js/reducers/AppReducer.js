@@ -1,10 +1,12 @@
 'use strict';
 const AppConstants = require('../constants/AppConstants');
+const MARIO = 'mario'; // default hubType
 
 const AppReducer = function(state, action) {
     if (typeof state === 'undefined') {
         return  {isConnected: false, isClosed: false,
-                 marioEvents: [], linkedTo: null,
+                 marioEvents: [], linkedTo: null, myHubType: MARIO,
+                 linkedHubType: MARIO,
                  error: null};
     } else {
         switch(action.type) {
